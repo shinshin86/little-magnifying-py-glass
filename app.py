@@ -3,6 +3,7 @@ from bottle import route, run, template, static_file,url,request
 from janome.tokenizer import Tokenizer
 from collections import Counter
 import os
+import re
 
 
 # read "css","javascript"
@@ -22,6 +23,8 @@ def index():
 
 @route('/upload', method='POST')
 def do_upload():
+    p = re.compile(r'\s(.*)')
+    
     category   = request.forms.get('category')
     upload     = request.files.get('upload')
     name, ext = os.path.splitext(upload.filename)
@@ -42,7 +45,7 @@ def do_upload():
     word_count = []
 #    total_count = []
     for word,cnt in counter.most_common():
-        word_count.append(str(word) + " : " + str(cnt))
+        word_count.append(str(p.sub('',word)) + " : " + str(cnt))
 #        total_count.append(cnt)
 
 #   total_count = sum([cnt])
