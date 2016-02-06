@@ -8,3 +8,7 @@ Little analysis tool of Python.
 
 -------
 ###Require install (pip)	pip install bottle	pip install janome
+	
+-------
+###Function
+* Morphological analysis
