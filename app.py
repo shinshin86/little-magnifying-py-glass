@@ -45,8 +45,26 @@ def do_upload():
     word_count = []
 #    total_count = []
     for word,cnt in counter.most_common():
+
+        #debug
+        check_word = p.sub('',word)
+        
+        # Not process case
+        if check_word == "。":
+            continue
+        if check_word == "、":
+            continue
+        if check_word == " ":
+            continue
+        if check_word == "":
+            continue
+
+        # match so verb
+        # => TODO
+        #        if not(str(p.sub('',word)) + " : " + str(cnt)) == u"の":
         word_count.append(str(p.sub('',word)) + " : " + str(cnt))
 #        total_count.append(cnt)
+
 
 #   total_count = sum([cnt])
     return template("result",url=url, result_file=result_file_path,result_text=texts,word_count = word_count)
