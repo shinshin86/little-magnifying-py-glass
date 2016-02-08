@@ -4,7 +4,7 @@ from janome.tokenizer import Tokenizer
 from collections import Counter
 import os
 import re
-
+import word_match
 
 # read "css","javascript"
 @route('/static/<filepath:path>',name='static_file')
@@ -24,7 +24,6 @@ def index():
 @route('/upload', method='POST')
 def do_upload():
     p = re.compile(r'\s(.*)')
-    
     category   = request.forms.get('category')
     upload     = request.files.get('upload')
     name, ext = os.path.splitext(upload.filename)
@@ -46,22 +45,13 @@ def do_upload():
 #    total_count = []
     for word,cnt in counter.most_common():
 
-        #debug
+
         check_word = p.sub('',word)
         
-        # Not process case
-        if check_word == "。":
-            continue
-        if check_word == "、":
-            continue
-        if check_word == " ":
-            continue
-        if check_word == "":
+        if word_match.word_check(check_word):
             continue
 
-        # match so verb
-        # => TODO
-        #        if not(str(p.sub('',word)) + " : " + str(cnt)) == u"の":
+
         word_count.append(str(p.sub('',word)) + " : " + str(cnt))
 #        total_count.append(cnt)
 
@@ -79,7 +69,9 @@ def get_save_path_for_category(category):
 
 def do_analysis(analyzed_file):
     result_file_name = "result/" + str(analyzed_file)
-    
+
+    p = re.compile(r'\s(.*)')
+
     t = Tokenizer()
     
     with open(analyzed_file,mode='r', encoding='utf-8') as read_file:
@@ -87,7 +79,9 @@ def do_analysis(analyzed_file):
     
     with open(result_file_name, mode='a', encoding='utf-8') as result_file:
         for token in t.tokenize(str(texts)):
-            result_file.write(str(token) + "\n")
+            check_word = p.sub('',str(token))
+            if word_match.word_check(check_word):
+                result_file.write(str(token) + "\n")
         
     return result_file_name
 
