@@ -18,7 +18,8 @@ p{
     font-family:"メイリオ","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","ＭＳ Ｐゴシック",sans-serif;
     position:relative;
     font-size: 20px;
-    background-color:#FFAAAA;
+//    background-color:#FFAAAA;
+    background-color: #EEAAEE;
 }
 
 .content{
@@ -42,4 +43,6 @@ p{
     
 }
 
-
+#tabs3 > ul:nth-child(1){
+        list-style:none;
+}
