@@ -80,7 +80,7 @@ def do_analysis(analyzed_file):
     with open(result_file_name, mode='a', encoding='utf-8') as result_file:
         for token in t.tokenize(str(texts)):
             check_word = p.sub('',str(token))
-            if word_match.word_check(check_word):
+            if not word_match.word_check(check_word):
                 result_file.write(str(token) + "\n")
         
     return result_file_name
