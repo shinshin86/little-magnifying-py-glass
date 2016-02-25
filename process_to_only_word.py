@@ -16,9 +16,9 @@ if (argc != 2):
 r = re.compile("(.*)(\s)(.*)")
 
 with open(argvs[1],mode='r', encoding='utf-8') as read_file:
-    line = read_file.readline()
-    while line:
-        m = r.match(str(line))
+    line = read_file.readlines()
+    for l in line:
+        m = r.match(l)
         print(m.group(1))
 
 
