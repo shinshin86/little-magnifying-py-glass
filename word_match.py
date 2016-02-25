@@ -15,5 +15,12 @@ def word_check(check_word):
         return True
     elif check_word == "の":
         return True
-    else:
-        return False
+    elif check_word == "・":
+        return True
+    elif check_word == "!":
+        return True
+    elif check_word == "?":
+        return True
+
+
+    return False
