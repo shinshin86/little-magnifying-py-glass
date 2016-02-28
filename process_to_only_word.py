@@ -5,6 +5,8 @@ import sys
 ###########################################################################
 # This code is developing yet!!
 # Target file(Already morphological analysis file) to process to word only.
+# <How to use>
+# python process_to_only_word.py <Target file(Already morphological analysis file)> > result.txt
 ###########################################################################
 
 argvs = sys.argv
