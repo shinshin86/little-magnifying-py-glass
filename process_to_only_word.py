@@ -17,6 +17,8 @@ with open(argvs[1],mode='r', encoding='utf-8') as read_file:
     line = read_file.readlines()
     for l in line:
         split_text_list = str(l).split()
+        if(len(split_text_list) == 0):
+            continue
         print(split_text_list[0])
 
 
