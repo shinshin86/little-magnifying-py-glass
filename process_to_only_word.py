@@ -3,7 +3,7 @@ import re
 import sys
 
 ###########################################################################
-# This code is not work yet!!
+# This code is developing yet!!
 # Target file(Already morphological analysis file) to process to word only.
 ###########################################################################
 
@@ -13,14 +13,10 @@ if (argc != 2):
     print('Usage: # python %s filename' % argvs[0])
     quit()
 
-r = re.compile("(.*)(\s)(.*)")
-
 with open(argvs[1],mode='r', encoding='utf-8') as read_file:
     line = read_file.readlines()
     for l in line:
-        m = r.match(l)
-        print(m.group(1))
-
-
+        split_text_list = str(l).split()
+        print(split_text_list[0])
 
 
