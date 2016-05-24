@@ -87,5 +87,5 @@ def do_analysis(analyzed_file):
 
 
 
-# サーバーの設定(開発用) - debugとreloaderを有効にしている
+# Server setting - Develop -> Enable to debug and reloader.
 run(host='localhost', port=8081, debug=True, reloader=True)
