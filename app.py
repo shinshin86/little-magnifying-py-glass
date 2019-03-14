@@ -88,4 +88,4 @@ def do_analysis(analyzed_file):
 
 
 # Server setting - Develop -> Enable to debug and reloader.
-run(host='localhost', port=8081, debug=True, reloader=True)
+run(host='localhost', port=8080, debug=True, reloader=True)
